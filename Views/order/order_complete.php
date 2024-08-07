@@ -1,3 +1,14 @@
+<?php
+// Lấy giá trị discount từ session
+$discount = isset($_SESSION['discount']) ? $_SESSION['discount'] : 0;
+$shipping = isset($_SESSION['freeship']) && $_SESSION['freeship'] ? 0 : 15000;
+
+// Tính toán số tiền giảm giá
+$discountAmount = $count * ($discount / 100);
+
+// Tính toán tổng số tiền
+$totalAmount = $count - $discountAmount + $shipping;
+?>
 <!-- pages-title-start -->
 <div class="pages-title section-padding">
 	<div class="container">
@@ -49,20 +60,30 @@
 										</tr>
 								<?php }
 								} ?>
-
+								<tr>
+									<th>Giảm Giá</th>
+									<td><?php
+										$discount = isset($_SESSION['discount']) ? $_SESSION['discount'] : 0;
+										echo $discount . '%';
+										?></td>
+								</tr>
+								<tr>
+									<th>Vận chuyển</th>
+									<td><?php
+										$shipping = isset($_SESSION['freeship']) && $_SESSION['freeship'] ? 0 : 15000;
+										echo number_format($shipping) . ' VNĐ';
+										?></td>
+								</tr>
 								<tr>
 									<th>VAT</th>
 									<td>0 VNĐ</td>
 								</tr>
-								<tr>
-									<th>Vận chuyển</th>
-									<td>15.000 VNĐ</td>
-								</tr>
+
 							</tbody>
 							<tfoot>
 								<tr>
 									<th>Tổng tiền</th>
-									<td><?= number_format($count + 15000) ?> VNĐ</td>
+									<td><?= number_format($totalAmount) ?> VNĐ</td>
 								</tr>
 							</tfoot>
 						</table>

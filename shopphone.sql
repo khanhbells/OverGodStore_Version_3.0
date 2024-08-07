@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 29, 2024 lúc 05:37 PM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+-- Thời gian đã tạo: Th8 07, 2024 lúc 10:39 PM
+-- Phiên bản máy phục vụ: 10.4.27-MariaDB
+-- Phiên bản PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,10 +58,23 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`MaHD`, `MaSP`, `SoLuong`, `DonGia`) VALUES
-(22, 62, 1, 1899000),
-(22, 63, 1, 499000),
-(22, 65, 1, 1699000),
-(22, 64, 1, 699000);
+(31, 67, 1, 1899000),
+(37, 62, 1, 1899000),
+(38, 62, 1, 1899000),
+(39, 62, 1, 1899000),
+(40, 62, 1, 1899000),
+(41, 67, 1, 1899000),
+(42, 62, 1, 1899000),
+(43, 62, 1, 1899000),
+(44, 62, 1, 1899000),
+(64, 66, 1, 1599000),
+(88, 62, 1, 200000),
+(89, 62, 1, 200000),
+(90, 62, 2, 200000),
+(91, 62, 2, 200000),
+(92, 62, 1, 200000),
+(93, 62, 1, 200000),
+(94, 62, 1, 200000);
 
 -- --------------------------------------------------------
 
@@ -81,7 +94,8 @@ CREATE TABLE `danhmuc` (
 INSERT INTO `danhmuc` (`MaDM`, `TenDM`) VALUES
 (1, 'Đầm '),
 (4, 'Chân Váy'),
-(5, 'Áo dài');
+(5, 'Áo dài'),
+(6, 'Quần');
 
 -- --------------------------------------------------------
 
@@ -106,7 +120,23 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`MaHD`, `MaND`, `NgayLap`, `NguoiNhan`, `SDT`, `DiaChi`, `PhuongThucTT`, `TongTien`, `TrangThai`) VALUES
-(22, 14, '2024-02-21 00:26:27', 'admin admin', '23423', 'nui thanh', '', 4796000, '0');
+(31, 31, '2024-08-06 19:54:20', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(37, 31, '2024-08-06 22:57:16', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(38, 31, '2024-08-06 22:59:18', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(39, 31, '2024-08-06 23:00:28', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(40, 31, '2024-08-06 23:08:20', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(41, 31, '2024-08-06 23:17:24', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(42, 31, '2024-08-06 23:23:05', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(43, 31, '2024-08-06 23:25:22', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(44, 31, '2024-08-06 23:43:54', 'Khanh Vũ', '0856378628', 'TN', '', 1899000, '1'),
+(64, 31, '2024-08-07 14:09:37', 'Khanh Vũ', '0856378628', 'TN', '', 1599000, '1'),
+(88, 31, '2024-08-07 23:58:40', 'Khanh Vũ', '0856378628', 'TN', '', 180000, '1'),
+(89, 31, '2024-08-08 00:00:28', 'Khanh Vũ', '0856378628', 'TN', '', 215000, '1'),
+(90, 31, '2024-08-08 00:34:04', 'Khanh Vũ', '0856378628', 'TN', '', 400000, '0'),
+(91, 31, '2024-08-08 01:10:18', 'Khanh Vũ', '0856378628', 'TN', 'Paypal', 375000, '0'),
+(92, 31, '2024-08-08 03:34:51', 'Khanh Vũ', '0856378628', 'TN', 'Paypal', 200000, '0'),
+(93, 31, '2024-08-08 03:36:06', 'Khanh Vũ', '0856378628', 'TN', '', 140000, '0'),
+(94, 31, '2024-08-08 03:37:30', 'Khanh Vũ', '0856378628', 'TN', 'Momo', 140000, '0');
 
 -- --------------------------------------------------------
 
@@ -155,7 +185,8 @@ CREATE TABLE `loaisanpham` (
 
 INSERT INTO `loaisanpham` (`MaLSP`, `TenLSP`, `HinhAnh`, `Mota`, `MaDM`) VALUES
 (44, 'Chanel', 'logo.png', 'Chanel', 1),
-(45, 'Louis Vuitton', '4_763b3e3d2c6142d69db0a685e2ddf9c5_master.png', 'Louis Vuitton', 4);
+(45, 'Louis Vuitton', '4_763b3e3d2c6142d69db0a685e2ddf9c5_master.png', 'Louis Vuitton', 4),
+(46, 'Cum On My Face', '', '', 6);
 
 -- --------------------------------------------------------
 
@@ -182,8 +213,11 @@ CREATE TABLE `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`MaND`, `Ho`, `Ten`, `GioiTinh`, `SDT`, `Email`, `DiaChi`, `TaiKhoan`, `MatKhau`, `MaQuyen`, `TrangThai`) VALUES
-(14, 'admin', 'admin', 'Nam', '0563650708', 'admin@gmail.com', 'Thai Binh', 'admin', 'c3284d0f94606de1fd2af172aba15bf3', 2, 1),
-(17, 'admin', 'admin', 'Nam', 'admin', 'admin@gmail.com', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 2, 1);
+(19, 'hieu', 'sadfasd', 'Nam', '0343975344', 'fsdfsd@gmialsdf', 'TN', 'admin3', '$2y$10$rgFXPYN.rOV3oErNBFpXle0AWVV7HvxtC/p/NwA18/v/6RbwL7IXC', 1, 1),
+(20, 'hieu', 'sadfasd', 'Nam', '0563650708', 'admin@gmail.com', 'TN', 'adminVP', '$2y$10$SZZkOlh6YEEpGG5hmpwaQugZRnUntMW.kM03TFfoyGmc0E5eiksam', 2, 1),
+(21, 'sdfsadfasdf', 'sdfasd', 'Nam', '0563650708', 'admin3@gmail.com', '', 'nhanvien12', 'e10adc3949ba59abbe56e057f20f883e', 3, 1),
+(22, 'Khanh', 'Vu', 'Nam', '123', 'khanhbells@gmail.com', 'TN', 'vubaokhanh', '1', 2, 1),
+(31, 'Khanh', 'Vũ', 'Nam', '0856378628', 'abcd@gmail.com', 'TN', 'admin1', 'e10adc3949ba59abbe56e057f20f883e', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -203,7 +237,8 @@ CREATE TABLE `phanquyen` (
 
 INSERT INTO `phanquyen` (`MaQuyen`, `TenQuyen`, `ChiTietQuyen`) VALUES
 (1, 'Customer', 'Khách hàng có tài khoản'),
-(2, 'Admin', 'Quản trị viên');
+(2, 'admin', 'Quản trị viên'),
+(3, 'Nhanvien', 'Nhan vien');
 
 -- --------------------------------------------------------
 
@@ -245,12 +280,12 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `MaLSP`, `MaDM`, `TenSP`, `DonGia`, `SoLuong`, `HinhAnh1`, `HinhAnh2`, `HinhAnh3`, `MaKM`, `ManHinh`, `HDH`, `CamSau`, `CamTruoc`, `CPU`, `Ram`, `Rom`, `SDCard`, `Pin`, `SoSao`, `SoDanhGia`, `TrangThai`, `MoTa`, `ThoiGian`, `KichThuoc`, `MauSac`) VALUES
-(62, 44, 1, 'ĐẦM LIỀN TRẮNG D12922', 1899000, 100, 'img/products/4_763b3e3d2c6142d69db0a685e2ddf9c5_master.png', '/img/products/d129221432364030258p1899dt_2__0781f82978fe4ba48d929398940d990a_master.png', '/img/products/d129221432364030258p1899dt_3__879a1d0678b549f2b8d56b652cc16d2c_master.png', 1, 'vải tweed ', 'đầm thiết kế dáng chữ A dài qua gối, cổ bẻ,tone mà', 'mặc sản phẩm size 2', 'Over', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;<a href=\"https://nemshop.vn/collections/vendors?q=nem&amp;view=vendor-alt\" style=\"color: rgb(7, 7, 7); background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; transition: all 0.3s ease 0s; position: relative; display: inline-block;\">NEM</a></div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span>&nbsp;<span class=\"sku-number\">129221432364030258</span></div>', '2024-02-20 16:50:00', 'Size 2', 'Trắng'),
-(63, 45, 4, 'CHÂN VÁY MIDI HOA Z42042', 499000, 100, 'img/products/5_4af088e56bac434d9e5acb02e4e65155_master.png', '/img/products/sm411921232333030674p399dt_z420421542451400257p499dt_3__4bc47b7962774d369765e19afc7395cf_master.png', '/img/products/sm411921232333030674p399dt_z420421542451400257p499dt_d34e86f7f1f7473994e74641957fa84e_master.png', 2, 'vải tơ', 'chân váy thiết kế dáng chữ A dài qua gối, kết hợp ', ' áo SM41192', ' cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản p', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\" style=\"\">Thương hiệu:</span>&nbsp;OverGod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><span class=\"title\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">Mã SP:</span><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><span class=\"sku-number\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">420421542451400257</span></p>', '2024-02-20 16:57:27', 'Size 3', 'Hồng'),
+(62, 44, 1, 'ĐẦM LIỀN TRẮNG D12922', 200000, 1, 'img/products/4_763b3e3d2c6142d69db0a685e2ddf9c5_master.png', '/img/products/d129221432364030258p1899dt_2__0781f82978fe4ba48d929398940d990a_master.png', '/img/products/d129221432364030258p1899dt_3__879a1d0678b549f2b8d56b652cc16d2c_master.png', 1, 'vải tweed ', 'đầm thiết kế dáng chữ A dài qua gối, cổ bẻ,tone mà', 'mặc sản phẩm size 2', 'Over', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span> <a href=\"https://nemshop.vn/collections/vendors?q=nem&view=vendor-alt\" style=\"color: rgb(7, 7, 7); background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; transition: all 0.3s ease 0s; position: relative; display: inline-block;\">NEM</a></div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\"> </span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span> <span class=\"sku-number\">129221432364030258</span></div>', '2024-08-08 02:10:55', 'M', 'Trắng'),
+(63, 45, 4, 'CHÂN VÁY MIDI HOA Z42042', 499000, 100, 'img/products/5_4af088e56bac434d9e5acb02e4e65155_master.png', '/img/products/sm411921232333030674p399dt_z420421542451400257p499dt_3__4bc47b7962774d369765e19afc7395cf_master.png', '/img/products/sm411921232333030674p399dt_z420421542451400257p499dt_d34e86f7f1f7473994e74641957fa84e_master.png', 2, 'vải tơ', 'chân váy thiết kế dáng chữ A dài qua gối, kết hợp ', ' áo SM41192', ' cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản p', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\" style=\"\">Thương hiệu:</span> OverGod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\"> </span><span class=\"title\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">Mã SP:</span><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\"> </span><span class=\"sku-number\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">420421542451400257</span></p>', '2024-08-06 07:35:21', 'L', 'Hồng'),
 (64, 45, 1, 'ĐẦM HOA TAY BỒNG D42012', 699000, 100, 'img/products/6_64e2213b1d564b028066696836214bc9_master.png', '/img/products/d420121432461400457p699dt_4__f913b0027a15441abd8fd156a3023d75_master.png', '/img/products/d420121432461400457p699dt_c3f9687fa145412cba1e8ac115fb6d01_master.png', 2, 'vải tơ', ' đầm thiết kế dáng chữ A dài qua gối, kết hợp họa ', 'mặc sản phẩm size 2', '1m65cm, nặng 50kg', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;Overgad</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><span class=\"title\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">Mã SP:</span><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><span class=\"sku-number\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">420121432461400257</span></p>', '2024-02-20 17:05:56', 'Size 2', 'Hồng'),
 (65, 45, 5, 'ÁO DÀI HOA ĐỎ AD14052', 1699000, 100, 'img/products/4_91aeb457d72041eaa2e5d027f4d769aa_master.png', '/img/products/ad140521582411020201p1699dt_q140621782451020257p1699dt_3__0700b70bbcc543818d17e12fa64cb8c8_master.png', '/img/products/ad140521582411020201p1699dt_q140621782451020257p1699dt_9f569bcba98e43e69b084a43f996e221_master.png', 2, ' vải tổng hợp cao cấp ', ' áo dài thiết kế dài tay, tone nền màu đỏ kết hợp ', 'quần Q14062', ' mặc sản phẩm size 2', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;OverGod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><span class=\"title\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">Mã SP:</span><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><span class=\"sku-number\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">140521582411020201</span></p>', '2024-02-20 17:33:14', 'Size 2', 'Đỏ'),
-(66, 45, 1, 'ĐẦM SUÔNG HOA TAY VOAN D15852', 1599000, 100, 'img/products/d158521422461000601p1599dt_1__b8886937df924e019c4e4615b559e20b_master.jpg', '/img/products/d158521422461000601p1599dt_638a8fd4856843979d4f803e72f10df8_master.webp', '/img/products/5_dd846431ed5e4af690bc379da4c88deb_master.png', 2, ' vải tổng hợp cao cấp ', 'đầm thiết kế dáng chữ A dài qua gối, cổ bẻ,tone mà', 'quần Q14062', ' cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản p', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;Overgad</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span>&nbsp;<span class=\"sku-number\">158521422461000601</span></div>', '2024-02-20 22:50:43', 'Size 2', 'Trắng'),
-(67, 45, 1, 'ĐẦM GẤM HOA D15822', 1899000, 100, 'img/products/15_55c428a8bd6b4219ad302e1338b566a5_master.webp', '/img/products/d158221412431000205p1899dt_3__9ba894fd27e64a7a8c2c296f31afc2a6_master.webp', '/img/products/d158221412431000205p1899dt_4__b775a2d4388e48d3af7fded7dfd73964_master.jpg', 1, '', '', '', '', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span> Overgod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\"> </span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span> <span class=\"sku-number\">158221412431000</span></div>', '2024-02-20 22:53:44', '', ''),
+(66, 45, 1, 'ĐẦM SUÔNG HOA TAY VOAN D15852', 1599000, 99, 'img/products/d158521422461000601p1599dt_1__b8886937df924e019c4e4615b559e20b_master.jpg', '/img/products/d158521422461000601p1599dt_638a8fd4856843979d4f803e72f10df8_master.webp', '/img/products/5_dd846431ed5e4af690bc379da4c88deb_master.png', 2, ' vải tổng hợp cao cấp ', 'đầm thiết kế dáng chữ A dài qua gối, cổ bẻ,tone mà', 'quần Q14062', ' cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản p', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;Overgad</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span>&nbsp;<span class=\"sku-number\">158521422461000601</span></div>', '2024-02-20 22:50:43', 'Size 2', 'Trắng'),
+(67, 45, 1, 'ĐẦM GẤM HOA D15822', 1899000, 97, 'img/products/15_55c428a8bd6b4219ad302e1338b566a5_master.webp', '/img/products/d158221412431000205p1899dt_3__9ba894fd27e64a7a8c2c296f31afc2a6_master.webp', '/img/products/d158221412431000205p1899dt_4__b775a2d4388e48d3af7fded7dfd73964_master.jpg', 1, '', '', '', '', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span> Overgod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\"> </span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span> <span class=\"sku-number\">158221412431000</span></div>', '2024-02-20 22:53:44', '', ''),
 (68, 45, 4, 'CHÂN VÁY BÚT CHÌ NHÚN HÔNG Z14672', 999000, 100, 'img/products/5_cf5b4852e97045348d50e761ffa3962a_master.webp', '/img/products/sm158421232431000457p899dt_z146721542411120218p999dt_2__copy_d3d4009a288545baafdc818ce54c8978_master.jpg', '/img/products/sm158421232431000457p899dt_z146721542411120218p999dt_2__copy_d3d4009a288545baafdc818ce54c8978_master.jpg', 1, ' vải thô', ' ​chân váy thiết kế dáng bút chì, tone màu đỏ đậm', ' áo SM15842', 'cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản ph', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;Overgod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span>&nbsp;<span class=\"sku-number\">146721542411120418</span></div>', '2024-02-20 22:56:50', 'Size 2', 'Hồng'),
 (69, 44, 4, 'CHÂN VÁY MIDI Z14462', 899000, 100, 'img/products/2_a515098af03542c6988d605e65329c9d_master.webp', '/img/products/sm056621222333430258p999dt_z144621542431040201p899dt_copy_a7511ce7f85a47e7982e918b18560328_master.webp', '/img/products/sm056621222333430258p999dt_z144621542431040201p899dt_2__copy_fc0b69da0d844b87be3161b7ec8e734f_master.jpg', 5, 'vải thô', ' ​chân váy thiết kế dáng chữ A, tone màu nâu trơn', 'áo SM05662', 'cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản ph', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span>&nbsp;Overgod</div><p><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">&nbsp;</span><br></p><div class=\"pro-sku ProductSku\" style=\"display: inline-block; color: rgb(7, 7, 7); width: 359.984px; font-size: 14px; line-height: 21px; font-family: gmv_din_pro;\"><span class=\"title\">Mã SP:</span>&nbsp;<span class=\"sku-number\">144621542431040201</span></div>', '2024-02-20 22:59:17', 'Size 2', 'Hồng'),
 (70, 45, 4, 'CHÂN VÁY MIDI Z13182', 990000, 100, 'img/products/13_b43fff07df8a409e8139becb7c3077bf_master.webp', '/img/products/ak131721332384060401p1299dt_z131821542384160401p999dt_4__1f24100608a54f629de79a6e0704131f_master.webp', '/img/products/ak131721332384060401p1299dt_z131821542384160401p999dt_6__d85fe272b6614bf8884c366bcb632168_master.webp', 2, 'vải tơ', 'đầm thiết kế dáng chữ A dài qua gối, cổ bẻ,tone mà', 'mặc sản phẩm size 2', 'cao 1m60, nặng 50kg, số đo 84 - 64 - 90 mặc sản ph', NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '<div class=\"pro-brand\" style=\"display: inline-block; width: 359.984px; font-size: 14px; line-height: 21px; color: rgb(7, 7, 7); font-family: gmv_din_pro;\"><span class=\"title\">Thương hiệu:</span> Overgad</div><p><span class=\"title\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">Mã SP:</span><span style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\"> </span><span class=\"sku-number\" style=\"color: rgb(7, 7, 7); font-family: gmv_din_pro; font-size: 14px;\">131821542384160401</span><br></p>', '2024-02-20 23:04:26', 'Size 2', 'Hồng'),
@@ -332,13 +367,13 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT cho bảng `khuyenmai`
@@ -350,13 +385,13 @@ ALTER TABLE `khuyenmai`
 -- AUTO_INCREMENT cho bảng `loaisanpham`
 --
 ALTER TABLE `loaisanpham`
-  MODIFY `MaLSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `MaLSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT cho bảng `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `MaND` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `MaND` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT cho bảng `phanquyen`
@@ -368,7 +403,7 @@ ALTER TABLE `phanquyen`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

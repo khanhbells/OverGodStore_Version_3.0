@@ -61,6 +61,12 @@ switch ($mod) {
             case 'deleteall':
                 $controller_obj->deleteall_cart();
                 break;
+            case 'apply_coupon':
+                $controller_obj->applyCoupon();
+                break;
+            case 'remove_coupon':
+                $controller_obj->removeCoupons();
+                break;
             default:
                 $controller_obj->list_cart();
                 break;

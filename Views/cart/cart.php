@@ -1,27 +1,3 @@
-<!-- pages-title-start -->
-<div class="pages-title section-padding">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="pages-title-text text-center">
-					<h2>Giỏ Hàng</h2>
-					<ul class="text-left">
-						<li><a href="?act=home">Trang chủ</a></li>
-						<li><span> // </span>Giỏ Hàng</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- pages-title-end -->
-<?php
-if (isset($_COOKIE['msg'])) {
-	echo "<div class='alert alert-danger'>" . $_COOKIE['msg'] . "</div>";
-	//setcookie('msg', '', time() - 3600); // Xóa cookie sau khi hiển thị
-}
-?>
-
 <!-- cart content section start -->
 <section class="pages cart-page section-padding">
 	<div class="container">
@@ -29,6 +5,11 @@ if (isset($_COOKIE['msg'])) {
 			<div class="col-xs-12">
 				<div class="table-responsive padding60">
 					<table class="wishlist-table text-center" id="dxd">
+						<?php if (isset($_COOKIE['msg'])) { ?>
+							<div class="alert alert-warning">
+								<strong>Thông báo</strong> <?= $_COOKIE['msg'] ?>
+							</div>
+						<?php } ?>
 						<thead>
 							<tr>
 								<th>Sản phẩm</th>
@@ -84,6 +65,7 @@ if (isset($_COOKIE['msg'])) {
 						</div>
 						<div class="cart-form-text pay-details table-responsive">
 							<form action="?act=checkout" method="post">
+
 								<table>
 									<tbody>
 										<tr>
@@ -92,11 +74,21 @@ if (isset($_COOKIE['msg'])) {
 										</tr>
 										<tr>
 											<th>Giảm giá</th>
-											<td>0%</td>
+											<td>
+												<?php
+												$discount = isset($_SESSION['discount']) ? $_SESSION['discount'] : 0;
+												echo $discount . '%';
+												?>
+											</td>
 										</tr>
 										<tr>
 											<th>Vận Chuyển</th>
-											<td>15,000 VNĐ</td>
+											<td>
+												<?php
+												$shipping = isset($_SESSION['freeship']) && $_SESSION['freeship'] ? 0 : 15000;
+												echo number_format($shipping) . ' VNĐ';
+												?>
+											</td>
 										</tr>
 										<tr>
 											<th>Vat</th>
@@ -106,7 +98,13 @@ if (isset($_COOKIE['msg'])) {
 									<tfoot>
 										<tr>
 											<th class="tfoot-padd">Tổng tiền</th>
-											<td class="tfoot-padd"><?= number_format($total + 15000) ?> VNĐ</td>
+											<td class="tfoot-padd">
+												<?php
+												$discountAmount = $total * ($discount / 100);
+												$finalTotal = $total - $discountAmount + $shipping;
+												echo number_format($finalTotal) . ' VNĐ';
+												?>
+											</td>
 										</tr>
 									</tfoot>
 								</table>
@@ -124,10 +122,15 @@ if (isset($_COOKIE['msg'])) {
 						</div>
 						<div class="cart-form-text custom-input">
 							<p>Nhập mã giảm giá nếu bạn có !!</p>
-							<form action="" method="post">
-								<input type="text" name="subject" placeholder="Nhập mã tại đây..." />
+							<form action="?act=cart&xuli=apply_coupon" method="post">
+								<input type="text" name="coupon_code" placeholder="Nhập mã tại đây..." />
 								<div class="submit-text coupon">
 									<button type="submit">Áp dụng</button>
+								</div>
+							</form>
+							<form action="?act=cart&xuli=remove_coupon" method="post">
+								<div class="submit-text coupon">
+									<button type="submit">Xóa mã giảm giá</button>
 								</div>
 							</form>
 						</div>

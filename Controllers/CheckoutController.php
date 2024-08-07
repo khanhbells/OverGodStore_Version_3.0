@@ -41,6 +41,16 @@ class CheckoutController
             }
         }
 
+        // Lấy giá trị mã giảm giá và freeship từ session
+        $discount = isset($_SESSION['discount']) ? $_SESSION['discount'] : 0;
+        $freeship = isset($_SESSION['freeship']) && $_SESSION['freeship'] ? 0 : 15000;
+
+        // Tính toán số tiền giảm giá
+        $discountAmount = $count * ($discount / 100);
+
+        // Tính toán tổng số tiền sau khi áp dụng mã giảm giá và freeship
+        $totalAmount = $count - $discountAmount + $freeship;
+
         // Kiểm tra xem phương thức thanh toán có phải là MoMo không
         $isMomoPayment = isset($_SESSION['payment_info']);
 
@@ -49,11 +59,13 @@ class CheckoutController
             $NguoiNhan = isset($_SESSION['payment_info']['NguoiNhan']) ? $_SESSION['payment_info']['NguoiNhan'] : '';
             $SDT = isset($_SESSION['payment_info']['SDT']) ? $_SESSION['payment_info']['SDT'] : '';
             $DiaChi = isset($_SESSION['payment_info']['DiaChi']) ? $_SESSION['payment_info']['DiaChi'] : '';
+            $paymentMethod = "Momo";
         } else {
             // Lấy thông tin khách hàng từ POST data nếu thanh toán bằng phương thức khác
             $NguoiNhan = isset($_POST['NguoiNhan']) ? $_POST['NguoiNhan'] : '';
             $SDT = isset($_POST['SDT']) ? $_POST['SDT'] : '';
             $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : '';
+            $paymentMethod = "Paypal";
         }
 
         $data = array(
@@ -62,8 +74,10 @@ class CheckoutController
             'NguoiNhan' => $NguoiNhan,
             'SDT' => $SDT,
             'DiaChi' => $DiaChi,
-            'TongTien' => $count,
+            'PhuongThucTT' => $paymentMethod,
+            'TongTien' => $totalAmount, // Sử dụng tổng tiền đã tính toán
             'TrangThai' => '0', // 0: Đang xử lý, 1: Đã xử lý
+
         );
 
         $this->checkout_model->save($data);
@@ -76,6 +90,9 @@ class CheckoutController
         // Chuyển hướng đến order_complete sau khi lưu đơn hàng thành công
         header('location: ?act=checkout&xuli=order_complete');
     }
+
+
+
 
 
     function order_complete()
@@ -97,5 +114,7 @@ class CheckoutController
 
         // Xóa giỏ hàng sau khi hiển thị trang
         unset($_SESSION['sanpham']);
+        unset($_SESSION['discount']);
+        unset($_SESSION['freeship']);
     }
 }
