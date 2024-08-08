@@ -133,7 +133,7 @@ class SanphamController
         ];
 
         foreach ($requiredFields as $field => $fieldName) {
-            if (empty($_POST[$field])) {
+            if (!isset($_POST[$field]) || trim($_POST[$field]) === '') {
                 setcookie('msg', "Không được để trống $fieldName", time() + 1);
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 return;

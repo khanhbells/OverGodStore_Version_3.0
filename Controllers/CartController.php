@@ -129,7 +129,7 @@ class CartController
     {
         unset($_SESSION['discount']);
         unset($_SESSION['freeship']);
-        unset($_SESSION['used_coupons']);
+        // unset($_SESSION['used_coupons']);
         setcookie('msg', 'Đã xóa mã giảm giá.', time() + 5);
         header('Location: ?act=cart#dxd');
     }
@@ -176,6 +176,7 @@ class CartController
             $arr['SoLuong'] = $currentQuantity - 1;
             $arr['ThanhTien'] = $arr['SoLuong'] * $arr['DonGia'];
             $_SESSION['sanpham'][$id] = $arr;
+            unset($_SESSION['used_coupons']);
         } else {
             // Xóa sản phẩm nếu số lượng còn lại là 1
             unset($_SESSION['sanpham'][$id]);

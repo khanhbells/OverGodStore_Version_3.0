@@ -81,7 +81,7 @@ class Checkout extends Model
       }
     } else {
       setcookie('msg', 'Một hoặc nhiều sản phẩm trong giỏ hàng không đủ số lượng để đặt. Vui lòng kiểm tra lại giỏ hàng.', time() + 2);
-      header('Location: ?act=cart');
+      header('Location: ?act=checkout');
     }
   }
 }

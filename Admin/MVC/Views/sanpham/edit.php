@@ -143,7 +143,8 @@
                 {
                     name: "SoLuong",
                     label: "Số lượng",
-                    type: "number"
+                    type: "number",
+                    allowZero: true
                 },
                 {
                     name: "MaKM",
@@ -176,6 +177,9 @@
             for (var i = 0; i < requiredFields.length; i++) {
                 var field = requiredFields[i];
                 var value = form[field.name].value;
+                if (field.name === "SoLuong" && field.allowZero && value === "0") {
+                    continue; // Allow zero value for "SoLuong"
+                }
                 if (!value) {
                     var errorMessage = document.querySelector("[name='" + field.name + "'] + .error-message");
                     errorMessage.innerHTML = field.label + " là bắt buộc.";

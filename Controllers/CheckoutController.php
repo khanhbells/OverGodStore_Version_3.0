@@ -60,8 +60,14 @@ class CheckoutController
             $SDT = isset($_SESSION['payment_info']['SDT']) ? $_SESSION['payment_info']['SDT'] : '';
             $DiaChi = isset($_SESSION['payment_info']['DiaChi']) ? $_SESSION['payment_info']['DiaChi'] : '';
             $paymentMethod = "Momo";
+        } elseif (isset($_POST['PhuongThucTT']) && $_POST['PhuongThucTT'] == 'offline') {
+            // Lấy thông tin khách hàng từ POST data nếu thanh toán bằng phương thức Pay on delivery
+            $NguoiNhan = isset($_POST['NguoiNhan']) ? $_POST['NguoiNhan'] : '';
+            $SDT = isset($_POST['SDT']) ? $_POST['SDT'] : '';
+            $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : '';
+            $paymentMethod = "Pay on delivery";
         } else {
-            // Lấy thông tin khách hàng từ POST data nếu thanh toán bằng phương thức khác
+            // Lấy thông tin khách hàng từ POST data nếu thanh toán bằng phương thức paypal
             $NguoiNhan = isset($_POST['NguoiNhan']) ? $_POST['NguoiNhan'] : '';
             $SDT = isset($_POST['SDT']) ? $_POST['SDT'] : '';
             $DiaChi = isset($_POST['DiaChi']) ? $_POST['DiaChi'] : '';
@@ -88,7 +94,7 @@ class CheckoutController
         }
 
         // Chuyển hướng đến order_complete sau khi lưu đơn hàng thành công
-        header('location: ?act=checkout&xuli=order_complete');
+
     }
 
 

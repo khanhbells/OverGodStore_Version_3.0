@@ -90,12 +90,16 @@ require_once("banner.php")
                                                     <div class="product-f">
                                                         <a href="?act=detail&id=<?= $data_sanpham1[$i]['MaSP'] ?>"><img src="public/<?= $data_sanpham1[$i]['HinhAnh1'] ?>" alt="Product Title" class="img-products" /></a>
                                                         <div class="actions-btn">
-                                                            <a href="javascript:void(0);" onclick="addToCart(<?= $data_sanpham1[$i]['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a>
+                                                            <?php if ($data_sanpham1[$i]['SoLuong'] > 0) { ?>
+                                                                <a href="javascript:void(0);" onclick="addToCart(<?= $data_sanpham1[$i]['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a><?php } ?>
                                                             <a href="?act=detail&id=<?= $data_sanpham1[$i]['MaSP'] ?>" data-toggle="modal"><i class="mdi mdi-eye"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="product-dsc">
                                                         <p><a href="?act=detail&id=<?= $data_sanpham1[$i]['MaSP'] ?>"><?= $data_sanpham1[$i]['TenSP'] ?></a></p>
+                                                        <?php if ($data_sanpham1[$i]['SoLuong'] == 0) { ?>
+                                                            <p class="out-of-stock">HẾT HÀNG</p>
+                                                        <?php } ?>
                                                         <span><?= number_format($data_sanpham1[$i]['DonGia']) ?> VNĐ</span>
                                                     </div>
                                                 </div>
@@ -135,12 +139,16 @@ require_once("banner.php")
                                                     <div class="product-f">
                                                         <a href="?act=detail&id=<?= $data_sanpham2[$i]['MaSP'] ?>"><img src="public/<?= $data_sanpham2[$i]['HinhAnh1'] ?>" alt="Product Title" class="img-products" /></a>
                                                         <div class="actions-btn">
-                                                            <a href="javascript:void(0);" onclick="addToCart(<?= $data_sanpham2[$i]['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a>
+                                                            <?php if ($data_sanpham2[$i]['SoLuong'] > 0) { ?>
+                                                                <a href="javascript:void(0);" onclick="addToCart(<?= $data_sanpham2[$i]['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a><?php } ?>
                                                             <a href="?act=detail&id=<?= $data_sanpham2[$i]['MaSP'] ?>" data-toggle="modal"><i class="mdi mdi-eye"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="product-dsc">
                                                         <p><a href="?act=detail&id=<?= $data_sanpham2[$i]['MaSP'] ?>"><?= $data_sanpham2[$i]['TenSP'] ?></a></p>
+                                                        <?php if ($data_sanpham2[$i]['SoLuong'] == 0) { ?>
+                                                            <p class="out-of-stock">HẾT HÀNG</p>
+                                                        <?php } ?>
                                                         <span><?= number_format($data_sanpham2[$i]['DonGia']) ?> VNĐ</span>
                                                     </div>
                                                 </div>
@@ -180,12 +188,16 @@ require_once("banner.php")
                                                     <div class="product-f">
                                                         <a href="?act=detail&id=<?= $data_sanpham3[$i]['MaSP'] ?>"><img src="public/<?= $data_sanpham3[$i]['HinhAnh1'] ?>" alt="Product Title" class="img-products" /></a>
                                                         <div class="actions-btn">
-                                                            <a href="javascript:void(0);" onclick="addToCart(<?= $data_sanpham3[$i]['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a>
+                                                            <?php if ($data_sanpham3[$i]['SoLuong'] > 0) { ?>
+                                                                <a href="javascript:void(0);" onclick="addToCart(<?= $data_sanpham3[$i]['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a><?php } ?>
                                                             <a href="?act=detail&id=<?= $data_sanpham3[$i]['MaSP'] ?>" data-toggle="modal"><i class="mdi mdi-eye"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="product-dsc">
                                                         <p><a href="?act=detail&id=<?= $data_sanpham3[$i]['MaSP'] ?>"><?= $data_sanpham3[$i]['TenSP'] ?></a></p>
+                                                        <?php if ($data_sanpham3[$i]['SoLuong'] == 0) { ?>
+                                                            <p class="out-of-stock">HẾT HÀNG</p>
+                                                        <?php } ?>
                                                         <span><?= number_format($data_sanpham3[$i]['DonGia']) ?> VNĐ</span>
                                                     </div>
                                                 </div>
@@ -237,6 +249,9 @@ require_once("banner.php")
                 </div>
                 <div class="colect-text ">
                     <h4><a href="?act=detail&id=<?= $data_random['1']['MaSP'] ?>"><?= $data_random['1']['TenSP'] ?></a></h4>
+                    <?php if ($data_random[1]['SoLuong'] == 0) { ?>
+                        <p class="out-of-stock">HẾT HÀNG</p>
+                    <?php } ?>
                     <h5>Giá: <?= number_format($data_random['1']['DonGia']) ?> VNĐ</h5>
                     <a href="?act=detail&id=<?= $data_random['1']['MaSP'] ?>">Mua ngay <i class="mdi mdi-arrow-right"></i></a>
                 </div>
@@ -269,13 +284,17 @@ require_once("banner.php")
                                             <div class="product-f">
                                                 <a href="?act=detail&id=<?= $row['MaSP'] ?>"><img src="public/<?= $row['HinhAnh1'] ?>" alt="Product Title" class="img-products" /></a>
                                                 <div class="actions-btn">
-                                                    <a href="javascript:void(0);" onclick="addToCart(<?= $row['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a>
+                                                    <?php if ($row['SoLuong'] > 0) { ?>
+                                                        <a href="javascript:void(0);" onclick="addToCart(<?= $row['MaSP'] ?>); location.reload();"><i class="mdi mdi-cart"></i></a><?php } ?>
 
                                                     <a href="?act=detail&id=<?= $row['MaSP'] ?>" data-toggle="modal"><i class="mdi mdi-eye"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-dsc">
                                                 <p><a href="?act=detail&id=<?= $row['MaSP'] ?>"><?= $row['TenSP'] ?></a></p>
+                                                <?php if ($row['SoLuong'] == 0) { ?>
+                                                    <p class="out-of-stock">HẾT HÀNG</p>
+                                                <?php } ?>
                                                 <span><?= number_format($row['DonGia']) ?> VNĐ</span>
                                             </div>
                                         </div>

@@ -128,11 +128,11 @@
 									<button type="submit">Áp dụng</button>
 								</div>
 							</form>
-							<form action="?act=cart&xuli=remove_coupon" method="post">
+							<!-- <form action="?act=cart&xuli=remove_coupon" method="post">
 								<div class="submit-text coupon">
 									<button type="submit">Xóa mã giảm giá</button>
 								</div>
-							</form>
+							</form> -->
 						</div>
 					</div>
 				</div>

@@ -17,12 +17,18 @@ $totalAmount = $count - $discountAmount + $shipping;
 			<div class="log-title-des">
 				<h3><strong>Chi tiết hóa đơn</strong></h3>
 			</div>
+			
 		<div class="row">
 			<div class="col-lg-6 left-order-checkout">
 				<div class="main-input single-cart-form">
 					<div class="custom-input">
 						<div class="log-title">
 							<h3><strong>Thông tin khách hàng</strong></h3>
+							<?php if (isset($_COOKIE['msg'])) { ?>
+							<div class="alert alert-warning">
+								<strong>Thông báo</strong> <?= $_COOKIE['msg'] ?>
+							</div>
+						<?php } ?>
 						</div>
 						<form id="info-form">
 							<input type="text" name="NguoiNhan1" placeholder="Người nhận" required value="<?php echo $_SESSION['login']['Ho'] . " " . $_SESSION['login']['Ten']  ?>" />
@@ -126,13 +132,22 @@ $totalAmount = $count - $discountAmount + $shipping;
 									onApprove: function(data, actions) {
 										return actions.order.capture().then(function(orderData) {
 											// Submit the form programmatically
-											document.getElementById('checkout-form').submit();
+											document.getElementById('checkout-form-paypal').submit();
 										});
 									}
 								}).render('#paypal-button-container');
 							</script>
 						</div>
 					</div>
+					<div>
+					<form action="?act=checkout&xuli=save" method="post" id="checkout-form-paypal">
+							<input type="hidden" name="NguoiNhan" placeholder="Người nhận" required value="<?php echo $_SESSION['login']['Ho'] . " " . $_SESSION['login']['Ten']  ?>" />
+							<input type="hidden" name="Email" placeholder="Địa chỉ Email.." required value="<?= $_SESSION['login']['Email'] ?>" />
+							<input type="hidden" name="SDT" placeholder="Số điện thoại.." required pattern="[0-9]+" minlength="10" value="<?= $_SESSION['login']['SDT'] ?>" />
+							<input type="hidden" name="DiaChi" placeholder="Địa chỉ giao hàng" required value="<?= $_SESSION['login']['DiaChi'] ?>" />
+							<input type="hidden" required name="PhuongThucTT" value="paypal" />
+							</form>
+						</div>
 
 
 					<div class="momo-checkout">
@@ -181,38 +196,38 @@ $totalAmount = $count - $discountAmount + $shipping;
 							<input type="hidden" required name="PhuongThucTT" value="offline" />
 							<script>
 								document.addEventListener('DOMContentLoaded', function() {
-									var infoForm = document.getElementById('info-form');
-									var checkoutForm = document.getElementById('checkout-form');
+								var infoForm = document.getElementById('info-form');
+								var checkoutForm = document.getElementById('checkout-form');
 
-									if (infoForm && checkoutForm) {
-										infoForm.addEventListener('submit', function(event) {
-											event.preventDefault();
+								if (infoForm && checkoutForm) {
+									infoForm.addEventListener('submit', function(event) {
+										event.preventDefault();
 
-											var NguoiNhan = document.querySelector('input[name="NguoiNhan1"]').value;
-											var Email = document.querySelector('input[name="Email1"]').value;
-											var SDT = document.querySelector('input[name="SDT1"]').value;
-											var DiaChi = document.querySelector('input[name="DiaChi1"]').value;
+										var NguoiNhan = document.querySelector('input[name="NguoiNhan1"]').value;
+										var Email = document.querySelector('input[name="Email1"]').value;
+										var SDT = document.querySelector('input[name="SDT1"]').value;
+										var DiaChi = document.querySelector('input[name="DiaChi1"]').value;
 
-											// Kiểm tra nếu bất kỳ trường nào trống
-											if (!NguoiNhan || !Email || !SDT || !DiaChi) {
-												alert("Vui lòng điền đầy đủ thông tin.");
-												return;
-											}
+										// Kiểm tra nếu bất kỳ trường nào trống
+										if (!NguoiNhan || !Email || !SDT || !DiaChi) {
+											alert("Vui lòng điền đầy đủ thông tin.");
+											return;
+										}
 
-											// Gán giá trị cho các input hidden
-											document.querySelector('input[name="NguoiNhan"]').value = NguoiNhan;
-											document.querySelector('input[name="Email"]').value = Email;
-											document.querySelector('input[name="SDT"]').value = SDT;
-											document.querySelector('input[name="DiaChi"]').value = DiaChi;
-											document.querySelector('input[name="PhuongThucTT"]').value = 'Offline';
+										// Gán giá trị cho các input hidden
+										document.querySelector('input[name="NguoiNhan"]').value = NguoiNhan;
+										document.querySelector('input[name="Email"]').value = Email;
+										document.querySelector('input[name="SDT"]').value = SDT;
+										document.querySelector('input[name="DiaChi"]').value = DiaChi;
+										document.querySelector('input[name="PhuongThucTT"]').value = 'offline'; // Đảm bảo giá trị đúng
 
-											// Gửi form hidden
-											checkoutForm.submit();
-										});
-									} else {
-										console.error('info-form or checkout-form not found.');
-									}
-								});
+										// Gửi form hidden
+										checkoutForm.submit();
+									});
+								} else {
+									console.error('info-form or checkout-form not found.');
+								}
+							});
 							</script>
 							<button type="submit" class="pay-offline">Thanh toán khi nhận hàng</button>
 						</form>
